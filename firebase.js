@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCf9L6BA7OLSIDoiic_xRtfgXJ1L2iHpNA",
-  authDomain: "hc-todo-app-a5d7e.firebaseapp.com",
-  projectId: "hc-todo-app-a5d7e",
-  storageBucket: "hc-todo-app-a5d7e.appspot.com",
-  messagingSenderId: "552585390298",
-  appId: "1:552585390298:web:8cb0c5e351ab7c57171de3"
+  apiKey: "AIzaSyCXfOcs7X8LCZ67wS177iQOv0jK6weOpe4",
+  authDomain: "hc-todo.firebaseapp.com",
+  projectId: "hc-todo",
+  storageBucket: "hc-todo.appspot.com",
+  messagingSenderId: "54612831755",
+  appId: "1:54612831755:web:d657584dd38398aef1e10e"
 };
 
 // Initialize Firebase
