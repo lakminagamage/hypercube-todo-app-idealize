@@ -12,6 +12,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 const HomeScreen = () => {
 
+
     const navigation = useNavigation();
 
     var db;
@@ -81,6 +82,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
         )
     }
+
     return (
         <View style={styles.container}>
             <View style={styles.pageHeader}>
