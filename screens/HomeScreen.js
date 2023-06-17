@@ -12,6 +12,7 @@ import { collection, getDocs } from "firebase/firestore";
 var taskArray = [];
 const HomeScreen = () => {
 
+
     const navigation = useNavigation();
     const user_email = "sankha.b21@gmail.com";
 
@@ -84,6 +85,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
         )
     }
+
     return (
         <View style={styles.container}>
             <View style={styles.pageHeader}>
