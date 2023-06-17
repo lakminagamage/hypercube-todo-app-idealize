@@ -9,20 +9,25 @@ import { useNavigation } from '@react-navigation/core';
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 
-
+var taskArray = [];
 const HomeScreen = () => {
 
     const navigation = useNavigation();
+    const user_email = "sankha.b21@gmail.com";
+
+    const [tasks, setTasks] = useState([...taskArray]);
 
     var db;
-    try{
+    try {
         db = getFirestore();
-    } catch(e){
+    } catch (e) {
         console.log(e);
         alert("Error connecting to database");
     }
 
-    const taskArray = [
+    console.log(taskArray);
+
+    /*taskArray = [
         {
             id: 1,
             taskTitle: 'Go to market',
@@ -41,9 +46,7 @@ const HomeScreen = () => {
             taskDescription: 'Inform about toothache',
             taskStatus: true
         },
-    ]
-
-    const [tasks, setTasks] = useState([...taskArray]);
+    ]*/
 
     const toggleSwitch = (id) => {
         for (let task of taskArray) {
@@ -120,7 +123,7 @@ const HomeScreen = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.tasksPanel}>
-                    <Text style={[styles.panelHeading,{marginBottom:15, fontWeight: 'bold',marginTop:10}]}>
+                    <Text style={[styles.panelHeading, { marginBottom: 15, fontWeight: 'bold', marginTop: 10 }]}>
                         Current Tasks
                     </Text>
                     {tasks.map(renderTasks)}
@@ -266,3 +269,18 @@ const styles = StyleSheet.create({
     }
 
 })
+
+const getData = async (taskArray, setTasks,db, user_email) => {
+    try {
+        taskArray = [];
+        const querySnapshot = await getDocs(collection(db, user_email));
+        querySnapshot.forEach((doc) => {
+            console.log(doc.id, " => ", doc.data());
+            taskArray.push(doc.data());
+        });
+        //setTasks([...taskArray]);
+    } catch (e) {
+        console.log(e);
+        alert("Error fetching data from database");
+    }
+}
