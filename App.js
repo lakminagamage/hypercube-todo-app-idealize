@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SplashScreen from './screens/SplashScreen';
+import HomeScreen from './screens/HomeScreen';
+
+//import MqttClient from './mqttClient.js'
+// import Paho from 'paho-mqtt';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{headerShown:false}} name="Splash" component={SplashScreen} />
+        <Stack.Screen options={{headerShown:false}} name="Home" component={HomeScreen} />
+        
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
