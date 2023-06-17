@@ -5,6 +5,7 @@ import { defcolors } from '../assets/colors/colors';
 import { useNavigation } from '@react-navigation/core';
 import firebase from '../firebase';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 
 const LoginScreen = () => {
@@ -22,6 +23,7 @@ const LoginScreen = () => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
         if (user.emailVerified) {
+
           navigaton.replace('Home');
         }
       }
@@ -210,4 +212,3 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   }
 })
-

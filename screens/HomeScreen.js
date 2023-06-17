@@ -5,7 +5,6 @@ import { buttonStyles } from '../assets/styles/button';
 import { textStyles } from '../assets/styles/text';
 import { defcolors } from '../assets/colors/colors';
 import { pageLayouts } from '../assets/styles/pageLayouts';
-import { useNavigation } from '@react-navigation/core';
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -13,22 +12,9 @@ var taskArray = [];
 const HomeScreen = () => {
 
 
-    const navigation = useNavigation();
     const user_email = "sankha.b21@gmail.com";
 
-    const [tasks, setTasks] = useState([...taskArray]);
-
-    var db;
-    try {
-        db = getFirestore();
-    } catch (e) {
-        console.log(e);
-        alert("Error connecting to database");
-    }
-
-    console.log(taskArray);
-
-    /*taskArray = [
+    taskArray = [
         {
             id: 1,
             taskTitle: 'Go to market',
@@ -47,7 +33,10 @@ const HomeScreen = () => {
             taskDescription: 'Inform about toothache',
             taskStatus: true
         },
-    ]*/
+    ]
+
+    
+    const [tasks, setTasks] = useState([...taskArray]);
 
     const toggleSwitch = (id) => {
         for (let task of taskArray) {
@@ -79,7 +68,8 @@ const HomeScreen = () => {
                         trackColor={defcolors.darkBlue}
                         thumbColor={task.taskStatus ? defcolors.lightBlue : defcolors.darkBlue}
                         ios_backgroundColor="#3e3e3e"
-                        value={task.taskStatus}>
+                        value={task.taskStatus}
+                        >
                     </Switch>
                 </View>
             </TouchableOpacity>
